@@ -1,0 +1,135 @@
+--[[ 
+    🏆 Aven L Hub — ULTRA MAX 2026
+    Feliz Ano Novo 🎆
+]]
+
+local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+-- GUI
+local ScreenGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+
+-- Background 2026
+local BG = Instance.new("Frame", ScreenGui)
+BG.Size = UDim2.new(1,0,1,0)
+BG.BackgroundColor3 = Color3.fromRGB(10,10,20)
+BG.BorderSizePixel = 0
+
+local BGText = Instance.new("TextLabel", BG)
+BGText.Size = UDim2.new(1,0,1,0)
+BGText.BackgroundTransparency = 1
+BGText.Text = "2026"
+BGText.Font = Enum.Font.GothamBlack
+BGText.TextSize = 200
+BGText.TextTransparency = 0.9
+BGText.TextColor3 = Color3.fromRGB(120,120,255)
+
+-- Animate background
+task.spawn(function()
+    while true do
+        TweenService:Create(
+            BGText,
+            TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+            {TextTransparency = 0.85}
+        ):Play()
+        task.wait(2)
+        TweenService:Create(
+            BGText,
+            TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+            {TextTransparency = 0.95}
+        ):Play()
+        task.wait(2)
+    end
+end)
+
+-- Main Hub
+local Main = Instance.new("Frame", ScreenGui)
+Main.Size = UDim2.new(0,480,0,340)
+Main.Position = UDim2.new(0.5,-240,0.5,-170)
+Main.BackgroundColor3 = Color3.fromRGB(18,18,30)
+Main.BorderSizePixel = 0
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0,20)
+
+-- Top
+local Top = Instance.new("Frame", Main)
+Top.Size = UDim2.new(1,0,0,60)
+Top.BackgroundColor3 = Color3.fromRGB(35,35,70)
+Top.BorderSizePixel = 0
+Instance.new("UICorner", Top).CornerRadius = UDim.new(0,20)
+
+local Title = Instance.new("TextLabel", Top)
+Title.Size = UDim2.new(1,0,1,0)
+Title.BackgroundTransparency = 1
+Title.Text = "🏆 Aven L Hub — ULTRA MAX 2026"
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 24
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- Roblox Trophy Image
+local Icon = Instance.new("ImageLabel", Main)
+Icon.Size = UDim2.new(0,110,0,110)
+Icon.Position = UDim2.new(0.05,0,0.27,0)
+Icon.BackgroundTransparency = 1
+Icon.Image = "rbxassetid://7072718366" -- Roblox-style image
+Instance.new("UICorner", Icon).CornerRadius = UDim.new(1,0)
+
+-- Glow animation
+RunService.RenderStepped:Connect(function()
+    Icon.Rotation += 0.1
+end)
+
+-- Info
+local Info = Instance.new("TextLabel", Main)
+Info.Position = UDim2.new(0.33,0,0.28,0)
+Info.Size = UDim2.new(0,300,0,90)
+Info.BackgroundColor3 = Color3.fromRGB(45,45,90)
+Info.TextWrapped = true
+Info.Text = "🎆 Feliz 2026 🎆\nAven L Hub — Edição Ano Novo"
+Info.Font = Enum.Font.GothamSemibold
+Info.TextSize = 17
+Info.TextColor3 = Color3.fromRGB(230,230,255)
+Instance.new("UICorner", Info).CornerRadius = UDim.new(0,16)
+
+-- Load Button
+local LoadBtn = Instance.new("TextButton", Main)
+LoadBtn.Size = UDim2.new(0,280,0,50)
+LoadBtn.Position = UDim2.new(0.21,0,0.66,0)
+LoadBtn.BackgroundColor3 = Color3.fromRGB(90,90,170)
+LoadBtn.Text = "🚀 INICIAR 2026"
+LoadBtn.Font = Enum.Font.GothamBold
+LoadBtn.TextSize = 20
+LoadBtn.TextColor3 = Color3.fromRGB(255,255,255)
+Instance.new("UICorner", LoadBtn).CornerRadius = UDim.new(0,16)
+
+-- Button animation
+LoadBtn.MouseEnter:Connect(function()
+    TweenService:Create(LoadBtn,TweenInfo.new(0.2),{BackgroundColor3=Color3.fromRGB(120,120,220)}):Play()
+end)
+LoadBtn.MouseLeave:Connect(function()
+    TweenService:Create(LoadBtn,TweenInfo.new(0.2),{BackgroundColor3=Color3.fromRGB(90,90,170)}):Play()
+end)
+
+-- ORIGINAL SCRIPT (mesma coisa de sempre)
+LoadBtn.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet(
+        "https://gist.githubusercontent.com/phantomdevelopers078-star/c79447ad663342ca1657f25c0fe4bc24/raw/6dc1640cdc04d319eb6f70ff7ee1afd14c9ced7c/PhantomChristmas.lua"
+    ))()
+end)
+
+-- Toggle Hub
+UIS.InputBegan:Connect(function(input,gp)
+    if gp then return end
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        Main.Visible = not Main.Visible
+        BG.Visible = Main.Visible
+    end
+end)
+
+-- Intro animation
+Main.Position = UDim2.new(0.5,-240,1.3,0)
+TweenService:Create(
+    Main,
+    TweenInfo.new(0.8, Enum.EasingStyle.Back),
+    {Position = UDim2.new(0.5,-240,0.5,-170)}
+):Play()
