@@ -1,1 +1,233 @@
-loadstring(game:HttpGet("https://rawscripts.net/raw/Troll-players-tower-FE-trolling-gui-40406"))()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local Stats = game:GetService("Stats")
+local player = Players.LocalPlayer
+
+workspace.FallenPartsDestroyHeight = -math.huge
+
+pcall(function()
+ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayBio",[2]="Toma Nescau "}))
+ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayName",[2]="AvenL Hub†"}))
+ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPBioColor",[2]=Color3.new(0,0,0)}))
+ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPNameColor",[2]=Color3.new(1,1,1)}))
+end)
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yuna-ux/Other-scripts/refs/heads/main/UI-Library.lua"))()
+local Window = redzlib:MakeWindow({ Title = "AvenL Hub 🤠👍", Subtitle = "Brookhaven RP - by ixi362", SaveFolder = "AvenL Hub" })
+Window:AddMinimizeButton({ Button = { Image = "rbxassetid://112995768245239", BackgroundTransparency = 0 }, Corner = { CornerRadius = UDim.new(0, 35) } })
+
+local InfoTab = Window:MakeTab({ "Informations", "info" })
+InfoTab:AddSection({ "Informations" })
+InfoTab:AddSection({ "Credits" })
+InfoTab:AddParagraph({ "Programmer:", "@AventureiroTurbo and Aven" })
+InfoTab:AddParagraph({ "Team:", "ixi362 chachado Developers" })
+InfoTab:AddSection({ "Discord" })
+InfoTab:AddDiscordInvite({ Name = "Aven Studios", Description = "Stay up to date with all the news from our Hub", Logo = "rbxassetid://112995768245239", Invite = "https://discord.gg/zzkbTZmYb", })
+InfoTab:AddSection({ "Information" })
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Stats = game:GetService("Stats")
+local UserInputService = game:GetService("UserInputService")
+local LocalizationService = game:GetService("LocalizationService")
+local player = Players.LocalPlayerlocal ReplicatedStorage = game:GetService("ReplicatedStorage") 
+local Players = game:GetService("Players") 
+local Stats = game:GetService("Stats") 
+local player = Players.LocalPlayer 
+
+workspace.FallenPartsDestroyHeight = -math.huge 
+
+pcall(function() 
+    ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayBio",[2]="toma chá "})) 
+    ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayName",[2]="CHACHADO USER†"})) 
+    ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPBioColor",[2]=Color3.new(0,0,0)})) 
+    ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPNameColor",[2]=Color3.new(1,1,1)})) 
+end) 
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yuna-ux/Other-scripts/refs/heads/main/UI-Library.lua"))() 
+local Window = redzlib:MakeWindow({ Title = "Chachado hub☕", Subtitle = "Brookhaven RP - by ixi362", SaveFolder = "ChachadoHub" }) 
+Window:AddMinimizeButton({ Button = { Image = "rbxassetid://112995768245239", BackgroundTransparency = 0 }, Corner = { CornerRadius = UDim.new(0, 35) } }) 
+
+local InfoTab = Window:MakeTab({ "Informations", "info" }) 
+InfoTab:AddSection({ "Informations" }) 
+InfoTab:AddSection({ "Credits" }) 
+InfoTab:AddParagraph({ "Programmer:", "@ixi362Hack and chachado" }) 
+InfoTab:AddParagraph({ "Team:", "ixi362 chachado Developers" }) 
+InfoTab:AddSection({ "Discord" }) 
+InfoTab:AddDiscordInvite({ Name = "Chachado Studios", Description = "Stay up to date with all the news from our Hub", Logo = "rbxassetid://112995768245239", Invite = "https://discord.gg/zzkbTZmYb", }) 
+InfoTab:AddSection({ "Information" }) 
+
+local Players = game:GetService("Players") 
+local RunService = game:GetService("RunService") 
+local Stats = game:GetService("Stats") 
+local UserInputService = game:GetService("UserInputService") 
+local LocalizationService = game:GetService("LocalizationService") 
+local player = Players.LocalPlayerInfoTab:AddSection({ "Warns" }) 
+InfoTab:AddParagraph({ 
+	"Some functions in this script are not made by us, they are from other scripters" 
+}) 
+InfoTab:AddParagraph({ 
+	"Found an error? Just report it to one of our programmers" 
+}) 
+
+InfoTab:AddSection({ "Others" }) 
+InfoTab:AddButton({ 
+	Name = "Rejoin", 
+	Callback = function() 
+		local TeleportService = game:GetService("TeleportService") 
+		TeleportService:TeleportToPlaceInstance(
+			game.PlaceId, 
+			game.JobId, 
+			game.Players.LocalPlayer
+		) 
+	end 
+})if identifyexecutor then 
+	local success, name, version = pcall(function() 
+		return identifyexecutor() 
+	end) 
+	info["You Executor:"] = success and (name .. (version and (" v" .. version) or "")) or "Unidentified" 
+else 
+	info["You Executor:"] = "Unidentified" 
+end 
+
+for key, value in pairs(info) do 
+	InfoTab:AddParagraph({ key, tostring(value) }) 
+end 
+
+InfoTab:AddParagraph({ "You Language:", "English" }) 
+InfoTab:AddParagraph({ "You are Playing:", "Brookhaven RP" }) 
+InfoTab:AddParagraph({ "You are Using:", "Chachado hub" }) 
+InfoTab:AddParagraph({ "You are Using Version:", "1.1.7 - Beta" })MainTab:AddToggle({
+	Name = "Fly",
+	Default = false,
+	Callback = function(state)
+		getgenv().Fly = state
+	end
+})
+
+local RunService = game:GetService("RunService")
+RunService.RenderStepped:Connect(function()
+	if getgenv().Fly and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+		player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 50, 0)
+	end
+end)local MainTab = Window:MakeTab({ "Main", "home" }) 
+MainTab:AddSection({ "Main Functions" }) 
+
+MainTab:AddButton({ 
+	Name = "Infinite Jump", 
+	Callback = function() 
+		getgenv().InfiniteJump = true 
+	end 
+}) 
+
+UserInputService.JumpRequest:Connect(function() 
+	if getgenv().InfiniteJump then 
+		player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping") 
+	end 
+end)local VisualTab = Window:MakeTab({ "Visual", "eye" })
+VisualTab:AddSection({ "Visual Options" })
+
+VisualTab:AddToggle({
+	Name = "Full Bright",
+	Default = false,
+	Callback = function(state)
+		if state then
+			game:GetService("Lighting").Brightness = 5
+			game:GetService("Lighting").ClockTime = 12
+		end
+	end
+})MainTab:AddButton({
+	Name = "No Clip",
+	Callback = function()
+		getgenv().Noclip = true
+	end
+})
+
+RunService.Stepped:Connect(function()
+	if getgenv().Noclip and player.Character then
+		for _, v in pairs(player.Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.CanCollide = false
+			end
+		end
+	end
+end)local FunTab = Window:MakeTab({ "Fun", "star" })
+FunTab:AddSection({ "Fun Scripts" })
+
+FunTab:AddButton({
+	Name = "Dance",
+	Callback = function()
+		local hum = player.Character:FindFirstChildOfClass("Humanoid")
+		if hum then
+			hum:LoadAnimation(Instance.new("Animation")).AnimationId = "rbxassetid://507771019"
+		end
+	end
+})VisualTab:AddButton({
+	Name = "Remove Fog",
+	Callback = function()
+		game:GetService("Lighting").FogEnd = 100000
+	end
+})
+
+VisualTab:AddButton({
+	Name = "Reset Lighting",
+	Callback = function()
+		game:GetService("Lighting"):ClearAllChildren()
+	end
+})local TeleportTab = Window:MakeTab({ "Teleport", "map-pin" })
+TeleportTab:AddSection({ "Quick Teleports" })
+
+TeleportTab:AddButton({
+	Name = "Spawn",
+	Callback = function()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(0, 5, 0)
+	end
+})
+
+TeleportTab:AddButton({
+	Name = "Random Place",
+	Callback = function()
+		player.Character.HumanoidRootPart.CFrame =
+			CFrame.new(math.random(-500,500), 10, math.random(-500,500))
+	end
+})FunTab:AddButton({
+	Name = "Spin Character",
+	Callback = function()
+		local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+		if hrp then
+			local spin = Instance.new("BodyAngularVelocity")
+			spin.AngularVelocity = Vector3.new(0, 50, 0)
+			spin.MaxTorque = Vector3.new(0, math.huge, 0)
+			spin.Parent = hrp
+			task.delay(3, function()
+				spin:Destroy()
+			end)
+		end
+	end
+})local MiscTab = Window:MakeTab({ "Misc", "settings" })
+MiscTab:AddSection({ "Miscellaneous" })
+
+MiscTab:AddButton({
+	Name = "Reset Character",
+	Callback = function()
+		player.Character:BreakJoints()
+	end
+})
+
+MiscTab:AddToggle({
+	Name = "Anti AFK",
+	Default = true,
+	Callback = function(state)
+		getgenv().AntiAFK = state
+	end
+})local VirtualUser = game:GetService("VirtualUser")
+
+player.Idled:Connect(function()
+	if getgenv().AntiAFK then
+		VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+		task.wait(1)
+		VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+	end
+end)Window:SelectTab(InfoTab)
+
+print("Chachado Hub carregado com sucesso!")
