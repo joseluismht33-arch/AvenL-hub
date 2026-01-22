@@ -230,4 +230,218 @@ player.Idled:Connect(function()
 	end
 end)Window:SelectTab(InfoTab)
 
-print("Chachado Hub carregado com sucesso!")
+print("Chachado Hub carregado com sucesso!")-- ===============================
+-- 😈 AVENL | TROLLS PLAYER
+-- ===============================
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+local TrollTab = Window:MakeTab({ "Trolls Player", "skull" })
+TrollTab:AddSection({ "Trolls Diretos 😈" })
+
+local TargetName = ""
+
+TrollTab:AddTextBox({
+	Name = "Nome do Player",
+	PlaceholderText = "Ex: Player123",
+	Callback = function(v)
+		TargetName = v
+	end
+})
+
+local function getTarget()
+	for _, plr in pairs(Players:GetPlayers()) do
+		if plr.Name:lower():find(TargetName:lower()) then
+			return plr
+		end
+	end
+end
+
+local Remote = ReplicatedStorage:FindFirstChildWhichIsA("RemoteEvent")
+
+-- ☠️ KILL (REMOTE)
+TrollTab:AddButton({
+	Name = "Kill (Remote)",
+	Callback = function()
+		if Remote then
+			Remote:FireServer("Kill", TargetName)
+		end
+	end
+})
+
+-- ☠️ KILL (TOOL)
+TrollTab:AddButton({
+	Name = "Kill (Tool)",
+	Callback = function()
+		local tool = player.Backpack:FindFirstChild("Ball") or player.Backpack:FindFirstChild("Kill")
+		if tool then
+			tool.Parent = player.Character
+			tool:Activate()
+		end
+	end
+})
+
+-- 🛋️ BRING (REMOTE)
+TrollTab:AddButton({
+	Name = "Bring (Remote)",
+	Callback = function()
+		if Remote then
+			Remote:FireServer("Bring", TargetName)
+		end
+	end
+})
+
+-- 🛋️ BRING (COUCH)
+TrollTab:AddButton({
+	Name = "Bring (Couch)",
+	Callback = function()
+		local tool = player.Backpack:FindFirstChild("Couch")
+		if tool then
+			tool.Parent = player.Character
+			tool:Activate()
+		end
+	end
+})-- ===============================
+-- 🛡️ AVENL | ADMIN
+-- ===============================
+
+local AdminTab = Window:MakeTab({ "Admin", "shield" })
+AdminTab:AddSection({ "Admin por Chat 🛡️" })
+
+local AdminON = false
+
+AdminTab:AddToggle({
+	Name = "Ativar Admin Chat",
+	Default = false,
+	Callback = function(v)
+		AdminON = v
+	end
+})
+
+player.Chatted:Connect(function(msg)
+	if not AdminON then return end
+
+	local args = msg:split(" ")
+	local cmd = args[1]
+	local name = args[2]
+
+	for _, plr in pairs(Players:GetPlayers()) do
+		if name and plr.Name:lower():find(name:lower()) then
+
+			if cmd == "!bring" then
+				local couch = player.Backpack:FindFirstChild("Couch")
+				if couch then
+					couch.Parent = player.Character
+					couch:Activate()
+				end
+			end
+
+			if cmd == "!kill" then
+				local ball = player.Backpack:FindFirstChild("Ball")
+				if ball then
+					ball.Parent = player.Character
+					ball:Activate()
+				end
+			end
+
+			if cmd == "!view" and plr.Character then
+				workspace.CurrentCamera.CameraSubject = plr.Character:FindFirstChild("Humanoid")
+			end
+		end
+	end
+end)-- ===============================
+-- 🔊 AVENL | AUDIO
+-- ===============================
+
+local AudioTab = Window:MakeTab({ "Audio", "music" })
+AudioTab:AddSection({ "Audio ALL 🔊" })
+
+local AudioID = ""
+
+AudioTab:AddTextBox({
+	Name = "ID do Áudio",
+	PlaceholderText = "Ex: 113778917971610",
+	Callback = function(v)
+		AudioID = v
+	end
+})
+
+AudioTab:AddButton({
+	Name = "Play Audio ALL",
+	Callback = function()
+		if Remote then
+			Remote:FireServer("Audio", AudioID)
+		end
+	end
+})
+
+AudioTab:AddButton({
+	Name = "Testando 01",
+	Callback = function()
+		Remote:FireServer("Audio", "113778917971610")
+	end
+})
+
+AudioTab:AddButton({
+	Name = "Testando 02",
+	Callback = function()
+		Remote:FireServer("Audio", "87022583947683")
+	end
+})-- ===============================
+-- 🎨 AVENL | AVATAR
+-- ===============================
+
+local AvatarTab = Window:MakeTab({ "Avatar", "user" })
+AvatarTab:AddSection({ "Avatar & Corpo 🎨" })
+
+local BodyID = ""
+local Search = ""
+
+AvatarTab:AddTextBox({
+	Name = "ID do Avatar",
+	PlaceholderText = "ID",
+	Callback = function(v)
+		BodyID = v
+	end
+})
+
+AvatarTab:AddTextBox({
+	Name = "Procurar Corpo",
+	PlaceholderText = "inf15 / homem / mulher / chibi / coração / pelúcia",
+	Callback = function(v)
+		Search = v:lower()
+	end
+})
+
+AvatarTab:AddButton({
+	Name = "Aplicar Corpo",
+	Callback = function()
+		print("Corpo aplicado:", Search, BodyID)
+	end
+})
+
+-- 🌈 RGB PELE
+local RunService = game:GetService("RunService")
+local hue = 0
+local RGB = false
+
+AvatarTab:AddToggle({
+	Name = "Pele RGB",
+	Default = false,
+	Callback = function(v)
+		RGB = v
+	end
+})
+
+RunService.RenderStepped:Connect(function()
+	if RGB and player.Character then
+		hue = (hue + 1) % 360
+		for _, v in pairs(player.Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.Color = Color3.fromHSV(hue/360,1,1)
+			end
+		end
+	end
+end)
