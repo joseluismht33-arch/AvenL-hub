@@ -1,447 +1,166 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-local Stats = game:GetService("Stats")
-local player = Players.LocalPlayer
+--[[ 
+ AvenL Hub V16
+ by AVENTUREIROTURBO
+ Tudo em 1 código
+ Codex Compatible
+]]
 
-workspace.FallenPartsDestroyHeight = -math.huge
+-----------------------------------------------------
+-- CONFIG / PLACE IDS
+-----------------------------------------------------
+local BROOKHAVEN_PLACEID = 4924922222
+local MURDERMY_PLACEID = 142823291
+local NATURAL_DISASTER_PLACEID = 189707
+local TSUNAMI_PLACEID = 189707 -- mesmo jogo
+local TRAINING_PLACEID = 16572004551
+local CARDEALER_PLACEID = 1554960397
+local BRAINROT_PLACEID_MAIN = 109983668079237
+local BRAINROT_PLACEID_NEW = 96342491571673
 
-pcall(function()
-ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayBio",[2]="Toma Nescau "}))
-ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayName",[2]="AvenL Hub†"}))
-ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPBioColor",[2]=Color3.new(0,0,0)}))
-ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPNameColor",[2]=Color3.new(1,1,1)}))
-end)
-
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yuna-ux/Other-scripts/refs/heads/main/UI-Library.lua"))()
-local Window = redzlib:MakeWindow({ Title = "AvenL Hub 🤠👍", Subtitle = "Brookhaven RP - by ixi362", SaveFolder = "AvenL Hub" })
-Window:AddMinimizeButton({ Button = { Image = "rbxassetid://112995768245239", BackgroundTransparency = 0 }, Corner = { CornerRadius = UDim.new(0, 35) } })
-
-local InfoTab = Window:MakeTab({ "Informations", "info" })
-InfoTab:AddSection({ "Informations" })
-InfoTab:AddSection({ "Credits" })
-InfoTab:AddParagraph({ "Programmer:", "@AventureiroTurbo and Aven" })
-InfoTab:AddParagraph({ "Team:", "ixi362 chachado Developers" })
-InfoTab:AddSection({ "Discord" })
-InfoTab:AddDiscordInvite({ Name = "Aven Studios", Description = "Stay up to date with all the news from our Hub", Logo = "rbxassetid://112995768245239", Invite = "https://discord.gg/zzkbTZmYb", })
-InfoTab:AddSection({ "Information" })
-
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local Stats = game:GetService("Stats")
-local UserInputService = game:GetService("UserInputService")
-local LocalizationService = game:GetService("LocalizationService")
-local player = Players.LocalPlayerlocal ReplicatedStorage = game:GetService("ReplicatedStorage") 
-local Players = game:GetService("Players") 
-local Stats = game:GetService("Stats") 
-local player = Players.LocalPlayer 
-
-workspace.FallenPartsDestroyHeight = -math.huge 
-
-pcall(function() 
-    ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayBio",[2]="toma chá "})) 
-    ReplicatedStorage.RE["1RPNam1eTex1t"]:FireServer(table.unpack({[1]="RolePlayName",[2]="CHACHADO USER†"})) 
-    ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPBioColor",[2]=Color3.new(0,0,0)})) 
-    ReplicatedStorage.RE["1RPNam1eColo1r"]:FireServer(table.unpack({[1]="PickingRPNameColor",[2]=Color3.new(1,1,1)})) 
-end) 
-
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yuna-ux/Other-scripts/refs/heads/main/UI-Library.lua"))() 
-local Window = redzlib:MakeWindow({ Title = "Chachado hub☕", Subtitle = "Brookhaven RP - by ixi362", SaveFolder = "ChachadoHub" }) 
-Window:AddMinimizeButton({ Button = { Image = "rbxassetid://112995768245239", BackgroundTransparency = 0 }, Corner = { CornerRadius = UDim.new(0, 35) } }) 
-
-local InfoTab = Window:MakeTab({ "Informations", "info" }) 
-InfoTab:AddSection({ "Informations" }) 
-InfoTab:AddSection({ "Credits" }) 
-InfoTab:AddParagraph({ "Programmer:", "@ixi362Hack and chachado" }) 
-InfoTab:AddParagraph({ "Team:", "ixi362 chachado Developers" }) 
-InfoTab:AddSection({ "Discord" }) 
-InfoTab:AddDiscordInvite({ Name = "Chachado Studios", Description = "Stay up to date with all the news from our Hub", Logo = "rbxassetid://112995768245239", Invite = "https://discord.gg/zzkbTZmYb", }) 
-InfoTab:AddSection({ "Information" }) 
-
-local Players = game:GetService("Players") 
-local RunService = game:GetService("RunService") 
-local Stats = game:GetService("Stats") 
-local UserInputService = game:GetService("UserInputService") 
-local LocalizationService = game:GetService("LocalizationService") 
-local player = Players.LocalPlayerInfoTab:AddSection({ "Warns" }) 
-InfoTab:AddParagraph({ 
-	"Some functions in this script are not made by us, they are from other scripters" 
-}) 
-InfoTab:AddParagraph({ 
-	"Found an error? Just report it to one of our programmers" 
-}) 
-
-InfoTab:AddSection({ "Others" }) 
-InfoTab:AddButton({ 
-	Name = "Rejoin", 
-	Callback = function() 
-		local TeleportService = game:GetService("TeleportService") 
-		TeleportService:TeleportToPlaceInstance(
-			game.PlaceId, 
-			game.JobId, 
-			game.Players.LocalPlayer
-		) 
-	end 
-})if identifyexecutor then 
-	local success, name, version = pcall(function() 
-		return identifyexecutor() 
-	end) 
-	info["You Executor:"] = success and (name .. (version and (" v" .. version) or "")) or "Unidentified" 
-else 
-	info["You Executor:"] = "Unidentified" 
-end 
-
-for key, value in pairs(info) do 
-	InfoTab:AddParagraph({ key, tostring(value) }) 
-end 
-
-InfoTab:AddParagraph({ "You Language:", "English" }) 
-InfoTab:AddParagraph({ "You are Playing:", "Brookhaven RP" }) 
-InfoTab:AddParagraph({ "You are Using:", "Chachado hub" }) 
-InfoTab:AddParagraph({ "You are Using Version:", "1.1.7 - Beta" })MainTab:AddToggle({
-	Name = "Fly",
-	Default = false,
-	Callback = function(state)
-		getgenv().Fly = state
-	end
-})
-
-local RunService = game:GetService("RunService")
-RunService.RenderStepped:Connect(function()
-	if getgenv().Fly and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-		player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 50, 0)
-	end
-end)local MainTab = Window:MakeTab({ "Main", "home" }) 
-MainTab:AddSection({ "Main Functions" }) 
-
-MainTab:AddButton({ 
-	Name = "Infinite Jump", 
-	Callback = function() 
-		getgenv().InfiniteJump = true 
-	end 
-}) 
-
-UserInputService.JumpRequest:Connect(function() 
-	if getgenv().InfiniteJump then 
-		player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping") 
-	end 
-end)local VisualTab = Window:MakeTab({ "Visual", "eye" })
-VisualTab:AddSection({ "Visual Options" })
-
-VisualTab:AddToggle({
-	Name = "Full Bright",
-	Default = false,
-	Callback = function(state)
-		if state then
-			game:GetService("Lighting").Brightness = 5
-			game:GetService("Lighting").ClockTime = 12
-		end
-	end
-})MainTab:AddButton({
-	Name = "No Clip",
-	Callback = function()
-		getgenv().Noclip = true
-	end
-})
-
-RunService.Stepped:Connect(function()
-	if getgenv().Noclip and player.Character then
-		for _, v in pairs(player.Character:GetDescendants()) do
-			if v:IsA("BasePart") then
-				v.CanCollide = false
-			end
-		end
-	end
-end)local FunTab = Window:MakeTab({ "Fun", "star" })
-FunTab:AddSection({ "Fun Scripts" })
-
-FunTab:AddButton({
-	Name = "Dance",
-	Callback = function()
-		local hum = player.Character:FindFirstChildOfClass("Humanoid")
-		if hum then
-			hum:LoadAnimation(Instance.new("Animation")).AnimationId = "rbxassetid://507771019"
-		end
-	end
-})VisualTab:AddButton({
-	Name = "Remove Fog",
-	Callback = function()
-		game:GetService("Lighting").FogEnd = 100000
-	end
-})
-
-VisualTab:AddButton({
-	Name = "Reset Lighting",
-	Callback = function()
-		game:GetService("Lighting"):ClearAllChildren()
-	end
-})local TeleportTab = Window:MakeTab({ "Teleport", "map-pin" })
-TeleportTab:AddSection({ "Quick Teleports" })
-
-TeleportTab:AddButton({
-	Name = "Spawn",
-	Callback = function()
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(0, 5, 0)
-	end
-})
-
-TeleportTab:AddButton({
-	Name = "Random Place",
-	Callback = function()
-		player.Character.HumanoidRootPart.CFrame =
-			CFrame.new(math.random(-500,500), 10, math.random(-500,500))
-	end
-})FunTab:AddButton({
-	Name = "Spin Character",
-	Callback = function()
-		local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-		if hrp then
-			local spin = Instance.new("BodyAngularVelocity")
-			spin.AngularVelocity = Vector3.new(0, 50, 0)
-			spin.MaxTorque = Vector3.new(0, math.huge, 0)
-			spin.Parent = hrp
-			task.delay(3, function()
-				spin:Destroy()
-			end)
-		end
-	end
-})local MiscTab = Window:MakeTab({ "Misc", "settings" })
-MiscTab:AddSection({ "Miscellaneous" })
-
-MiscTab:AddButton({
-	Name = "Reset Character",
-	Callback = function()
-		player.Character:BreakJoints()
-	end
-})
-
-MiscTab:AddToggle({
-	Name = "Anti AFK",
-	Default = true,
-	Callback = function(state)
-		getgenv().AntiAFK = state
-	end
-})local VirtualUser = game:GetService("VirtualUser")
-
-player.Idled:Connect(function()
-	if getgenv().AntiAFK then
-		VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-		task.wait(1)
-		VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-	end
-end)Window:SelectTab(InfoTab)
-
-print("Chachado Hub carregado com sucesso!")-- ===============================
--- 😈 AVENL | TROLLS PLAYER
--- ===============================
-
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local player = Players.LocalPlayer
-
-local TrollTab = Window:MakeTab({ "Trolls Player", "skull" })
-TrollTab:AddSection({ "Trolls Diretos 😈" })
-
-local TargetName = ""
-
-TrollTab:AddTextBox({
-	Name = "Nome do Player",
-	PlaceholderText = "Ex: Player123",
-	Callback = function(v)
-		TargetName = v
-	end
-})
-
-local function getTarget()
-	for _, plr in pairs(Players:GetPlayers()) do
-		if plr.Name:lower():find(TargetName:lower()) then
-			return plr
-		end
-	end
+-----------------------------------------------------
+-- LOADSTRING SAFE
+-----------------------------------------------------
+local function fastLoad(url)
+    local ok, src = pcall(function()
+        return game:HttpGet(url)
+    end)
+    if not ok or not src then
+        warn("[AvenL] Falha ao carregar:", url)
+        return
+    end
+    local run, err = pcall(function()
+        loadstring(src)()
+    end)
+    if not run then
+        warn("[AvenL] Erro:", err)
+    end
 end
 
-local Remote = ReplicatedStorage:FindFirstChildWhichIsA("RemoteEvent")
+-----------------------------------------------------
+-- UI BASE
+-----------------------------------------------------
+local Players = game:GetService("Players")
+local UIS = game:GetService("UserInputService")
+local player = Players.LocalPlayer
 
--- ☠️ KILL (REMOTE)
-TrollTab:AddButton({
-	Name = "Kill (Remote)",
-	Callback = function()
-		if Remote then
-			Remote:FireServer("Kill", TargetName)
-		end
-	end
-})
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+gui.Name = "AvenLHub"
 
--- ☠️ KILL (TOOL)
-TrollTab:AddButton({
-	Name = "Kill (Tool)",
-	Callback = function()
-		local tool = player.Backpack:FindFirstChild("Ball") or player.Backpack:FindFirstChild("Kill")
-		if tool then
-			tool.Parent = player.Character
-			tool:Activate()
-		end
-	end
-})
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 520, 0, 340)
+main.Position = UDim2.new(0.5, -260, 0.5, -170)
+main.BackgroundColor3 = Color3.fromRGB(20,20,20)
+main.Active = true
+main.Draggable = true
 
--- 🛋️ BRING (REMOTE)
-TrollTab:AddButton({
-	Name = "Bring (Remote)",
-	Callback = function()
-		if Remote then
-			Remote:FireServer("Bring", TargetName)
-		end
-	end
-})
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,35)
+title.Text = "AvenL Hub V16  |  by AVENTUREIROTURBO"
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.BackgroundTransparency = 1
+title.TextScaled = true
 
--- 🛋️ BRING (COUCH)
-TrollTab:AddButton({
-	Name = "Bring (Couch)",
-	Callback = function()
-		local tool = player.Backpack:FindFirstChild("Couch")
-		if tool then
-			tool.Parent = player.Character
-			tool:Activate()
-		end
-	end
-})-- ===============================
--- 🛡️ AVENL | ADMIN
--- ===============================
-
-local AdminTab = Window:MakeTab({ "Admin", "shield" })
-AdminTab:AddSection({ "Admin por Chat 🛡️" })
-
-local AdminON = false
-
-AdminTab:AddToggle({
-	Name = "Ativar Admin Chat",
-	Default = false,
-	Callback = function(v)
-		AdminON = v
-	end
-})
-
-player.Chatted:Connect(function(msg)
-	if not AdminON then return end
-
-	local args = msg:split(" ")
-	local cmd = args[1]
-	local name = args[2]
-
-	for _, plr in pairs(Players:GetPlayers()) do
-		if name and plr.Name:lower():find(name:lower()) then
-
-			if cmd == "!bring" then
-				local couch = player.Backpack:FindFirstChild("Couch")
-				if couch then
-					couch.Parent = player.Character
-					couch:Activate()
-				end
-			end
-
-			if cmd == "!kill" then
-				local ball = player.Backpack:FindFirstChild("Ball")
-				if ball then
-					ball.Parent = player.Character
-					ball:Activate()
-				end
-			end
-
-			if cmd == "!view" and plr.Character then
-				workspace.CurrentCamera.CameraSubject = plr.Character:FindFirstChild("Humanoid")
-			end
-		end
-	end
-end)-- ===============================
--- 🔊 AVENL | AUDIO
--- ===============================
-
-local AudioTab = Window:MakeTab({ "Audio", "music" })
-AudioTab:AddSection({ "Audio ALL 🔊" })
-
-local AudioID = ""
-
-AudioTab:AddTextBox({
-	Name = "ID do Áudio",
-	PlaceholderText = "Ex: 113778917971610",
-	Callback = function(v)
-		AudioID = v
-	end
-})
-
-AudioTab:AddButton({
-	Name = "Play Audio ALL",
-	Callback = function()
-		if Remote then
-			Remote:FireServer("Audio", AudioID)
-		end
-	end
-})
-
-AudioTab:AddButton({
-	Name = "Testando 01",
-	Callback = function()
-		Remote:FireServer("Audio", "113778917971610")
-	end
-})
-
-AudioTab:AddButton({
-	Name = "Testando 02",
-	Callback = function()
-		Remote:FireServer("Audio", "87022583947683")
-	end
-})-- ===============================
--- 🎨 AVENL | AVATAR
--- ===============================
-
-local AvatarTab = Window:MakeTab({ "Avatar", "user" })
-AvatarTab:AddSection({ "Avatar & Corpo 🎨" })
-
-local BodyID = ""
-local Search = ""
-
-AvatarTab:AddTextBox({
-	Name = "ID do Avatar",
-	PlaceholderText = "ID",
-	Callback = function(v)
-		BodyID = v
-	end
-})
-
-AvatarTab:AddTextBox({
-	Name = "Procurar Corpo",
-	PlaceholderText = "inf15 / homem / mulher / chibi / coração / pelúcia",
-	Callback = function(v)
-		Search = v:lower()
-	end
-})
-
-AvatarTab:AddButton({
-	Name = "Aplicar Corpo",
-	Callback = function()
-		print("Corpo aplicado:", Search, BodyID)
-	end
-})
-
--- 🌈 RGB PELE
-local RunService = game:GetService("RunService")
-local hue = 0
-local RGB = false
-
-AvatarTab:AddToggle({
-	Name = "Pele RGB",
-	Default = false,
-	Callback = function(v)
-		RGB = v
-	end
-})
-
-RunService.RenderStepped:Connect(function()
-	if RGB and player.Character then
-		hue = (hue + 1) % 360
-		for _, v in pairs(player.Character:GetDescendants()) do
-			if v:IsA("BasePart") then
-				v.Color = Color3.fromHSV(hue/360,1,1)
-			end
-		end
-	end
+-----------------------------------------------------
+-- SHIFT LOCK (GLOBAL)
+-----------------------------------------------------
+local shiftEnabled = false
+UIS.InputBegan:Connect(function(i,g)
+    if g then return end
+    if i.KeyCode == Enum.KeyCode.LeftShift then
+        shiftEnabled = not shiftEnabled
+        pcall(function()
+            player.DevEnableMouseLock = shiftEnabled
+        end)
+    end
 end)
+
+-----------------------------------------------------
+-- VISUAIS (FUNCIONAIS)
+-----------------------------------------------------
+local function visualBoombox()
+    local s = Instance.new("Sound", workspace)
+    s.SoundId = "rbxassetid://9129995071"
+    s.Volume = 10
+    s:Play()
+end
+
+local function tapetao()
+    local p = Instance.new("Part", workspace)
+    p.Size = Vector3.new(20,1,20)
+    p.Anchored = true
+    p.Position = player.Character.HumanoidRootPart.Position - Vector3.new(0,3,0)
+end
+
+-----------------------------------------------------
+-- MM2 MELHORADO
+-----------------------------------------------------
+local function mm2Visual()
+    local hum = player.Character:FindFirstChildOfClass("Humanoid")
+    if hum then
+        hum.WalkSpeed = 22
+        hum.JumpPower = 70
+    end
+end
+
+-----------------------------------------------------
+-- TSUNAMI / NATURAL DISASTER
+-----------------------------------------------------
+local function fakeAnim()
+    local char = player.Character
+    if not char then return end
+    for _,v in pairs(char:GetDescendants()) do
+        if v:IsA("Motor6D") then
+            v.Transform = CFrame.Angles(math.rad(15),0,0)
+        end
+    end
+end
+
+-----------------------------------------------------
+-- DETECÇÃO DE JOGO
+-----------------------------------------------------
+local id = game.PlaceId
+
+-- 🔵 BROOKHAVEN (EXATO COMO VOCÊ PEDIU)
+if id == BROOKHAVEN_PLACEID then
+    print("[AvenL] Brookhaven detectado")
+    fastLoad("https://api.rubis.app/v2/scrap/vk01i5gl1i7wg1tZ/raw")
+
+-- 🔴 MM2
+elseif id == MURDERMY_PLACEID then
+    print("[AvenL] MM2 detectado")
+    mm2Visual()
+
+-- 🌊 TSUNAMI / NATURAL DISASTER
+elseif id == NATURAL_DISASTER_PLACEID then
+    print("[AvenL] Tsunami detectado")
+    fakeAnim()
+
+-- 🧠 BRAINROT
+elseif id == BRAINROT_PLACEID_MAIN or id == BRAINROT_PLACEID_NEW then
+    print("[AvenL] Brainrot detectado")
+    fastLoad("https://api.rubis.app/v2/scrap/yeIwd4GtzoIs3jEB/raw")
+
+-- 🌍 UNIVERSAL
+else
+    print("[AvenL] Universal")
+end
+
+-----------------------------------------------------
+-- BOTÕES VISUAIS
+-----------------------------------------------------
+local function addButton(txt, y, func)
+    local b = Instance.new("TextButton", main)
+    b.Size = UDim2.new(0,160,0,30)
+    b.Position = UDim2.new(0,10,0,y)
+    b.Text = txt
+    b.BackgroundColor3 = Color3.fromRGB(40,40,40)
+    b.TextColor3 = Color3.fromRGB(255,255,255)
+    b.MouseButton1Click:Connect(func)
+end
+
+addButton("Boombox Visual", 50, visualBoombox)
+addButton("Tapetão Visual", 90, tapetao)
+addButton("MM2 Boost", 130, mm2Visual)
+addButton("Fake Anim (Vídeo)", 170, fakeAnim)
+
+print("[AvenL Hub V16] Carregado com sucesso ✅")
