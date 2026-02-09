@@ -1,69 +1,201 @@
 --====================================================
--- AvenL Hub - Loader Oficial
+-- AvenL Hub
 -- By AVENTUREIROTURBO
--- Dono: AVENTUREIROTURBO
--- Apenas Brookhaven RP
+-- Dono: Omegalife001 Aventureiroturbo
 --====================================================
 
--------------------------
--- CONFIGURAÇÃO
--------------------------
-local BROOKHAVEN_PLACEID = 4924922222
+print("[AvenL Hub] Carregando...")
 
--- URL do script Brookhaven
-local brookhavenUrl = "https://api.rubis.app/v2/scrap/vk01i5gl1i7wg1tZ/raw"
+-- Serviços
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
--------------------------
--- WEBHOOK (OPCIONAL)
--------------------------
-getgenv().bloxWebhookHost = "https://blox-webhook-notifier.onrender.com"
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
 
-local cryptUrl = "0389d0791374775d0f7be90039cac32243facebcbdb8b4dc83323fcd48f83a06d058c9761a2746cd78b46f5df3216f5b8bd6175f3ab2b6e677a67bc270484decf6301ffac50abb7f57861b5ec727bb3f8e0f20070dcef187a6f785c24dc6b3b5d1314957bfbad3e67c58f360280b8bf7409c65ac394d669aebe2fbe6d082435fcb5b3f5eca713cf65b8dfb5c47ff9e47606e852d4a14061bdc5e0226abe3f7384578de7508b46f0786400665be5974c86d52fb4b2c24ca8fdb01368f74f4d33e1c95a0d251be81de90f036220e3bc3174bdb781e5b0368a56e831fc1c760c4a0"
+----------------------------------------------------
+-- REMOTE SEGURO (BROOKHAVEN)
+----------------------------------------------------
+local function fireRemote(nome, args)
+    local re = ReplicatedStorage:FindFirstChild("RE")
+    if re and re:FindFirstChild(nome) then
+        pcall(function()
+            re[nome]:FireServer(unpack(args))
+        end)
+    end
+end
 
-local sucessoWebhook, requestWebhook = pcall(function()
-    return loadstring(game:HttpGet(
-        "https://blox-webhook-notifier.onrender.com/script/library"
-    ))()
+fireRemote("1RPNam1eTex1t", {"RolePlayName","AvenL Hub"})
+fireRemote("1RPNam1eTex1t", {"RolePlayBio","AvenL Hub\nToma Nescau🤠👍"})
+fireRemote("1RPNam1eColo1r", {"PickingRPBioColor",Color3.fromRGB(0,0,0)})
+fireRemote("1RPNam1eTex1t", {"RolePlayOwner","Omegalife001 Aventureiroturbo"})
+
+----------------------------------------------------
+-- GUI PRINCIPAL
+----------------------------------------------------
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+gui.Name = "AvenLHub"
+
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 440, 0, 300)
+main.Position = UDim2.new(0.5,-220,0.5,-150)
+main.BackgroundColor3 = Color3.fromRGB(20,20,20)
+main.Active = true
+main.Draggable = true
+
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,40)
+title.BackgroundTransparency = 1
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 22
+title.TextColor3 = Color3.new(1,1,1)
+
+----------------------------------------------------
+-- SISTEMA DE IDIOMAS
+----------------------------------------------------
+local Idiomas = {
+    ["pt"] = {
+        titulo = "Aven Hub",
+        test_msg = "Mensagem Teste",
+        speed = "Velocidade Teste",
+        jump = "Pulo Teste",
+        reset = "Reset Teste",
+        aba_test = "TESTE",
+        aba_lang = "LINGUAGEM"
+    },
+    ["en"] = {
+        titulo = "Aven Hub",
+        test_msg = "Test Message",
+        speed = "Test Speed",
+        jump = "Test Jump",
+        reset = "Test Reset",
+        aba_test = "TEST",
+        aba_lang = "LANGUAGE"
+    },
+    ["cn"] = {
+        titulo = "Aven Hub",
+        test_msg = "测试消息",
+        speed = "测试速度",
+        jump = "测试跳跃",
+        reset = "重置角色",
+        aba_test = "测试",
+        aba_lang = "语言"
+    }
+}
+
+local idiomaAtual = "pt"
+
+----------------------------------------------------
+-- BOTÕES DE ABA
+----------------------------------------------------
+local abaTestBtn = Instance.new("TextButton", main)
+abaTestBtn.Size = UDim2.new(0,110,0,30)
+abaTestBtn.Position = UDim2.new(0,10,0,45)
+
+local abaLangBtn = Instance.new("TextButton", main)
+abaLangBtn.Size = UDim2.new(0,110,0,30)
+abaLangBtn.Position = UDim2.new(0,130,0,45)
+
+for _,b in pairs({abaTestBtn, abaLangBtn}) do
+    b.BackgroundColor3 = Color3.fromRGB(40,40,40)
+    b.TextColor3 = Color3.new(1,1,1)
+    b.Font = Enum.Font.SourceSansBold
+    b.TextSize = 14
+end
+
+----------------------------------------------------
+-- FRAMES DAS ABAS
+----------------------------------------------------
+local testFrame = Instance.new("Frame", main)
+testFrame.Position = UDim2.new(0,0,0,80)
+testFrame.Size = UDim2.new(1,0,1,-80)
+testFrame.BackgroundTransparency = 1
+
+local langFrame = Instance.new("Frame", main)
+langFrame.Position = testFrame.Position
+langFrame.Size = testFrame.Size
+langFrame.BackgroundTransparency = 1
+langFrame.Visible = false
+
+----------------------------------------------------
+-- FUNÇÃO BOTÃO
+----------------------------------------------------
+local function criarBotao(parent,texto,y,callback)
+    local btn = Instance.new("TextButton", parent)
+    btn.Size = UDim2.new(0,200,0,35)
+    btn.Position = UDim2.new(0,20,0,y)
+    btn.BackgroundColor3 = Color3.fromRGB(45,45,45)
+    btn.TextColor3 = Color3.new(1,1,1)
+    btn.Font = Enum.Font.SourceSansBold
+    btn.TextSize = 14
+    btn.Text = texto
+    btn.MouseButton1Click:Connect(callback)
+    return btn
+end
+
+----------------------------------------------------
+-- BOTÕES TEST (IGUAIS)
+----------------------------------------------------
+local btnMsg = criarBotao(testFrame,"",10,function()
+    print("[AvenL Hub] Teste OK")
 end)
 
-if sucessoWebhook and typeof(requestWebhook) == "function" then
-    pcall(function()
-        requestWebhook(cryptUrl)
-    end)
-else
-    warn("[AvenL Hub] Webhook não carregado.")
+local btnSpeed = criarBotao(testFrame,"",55,function()
+    humanoid.WalkSpeed = 32
+end)
+
+local btnJump = criarBotao(testFrame,"",100,function()
+    humanoid.JumpPower = 80
+end)
+
+local btnReset = criarBotao(testFrame,"",145,function()
+    humanoid.Health = 0
+end)
+
+----------------------------------------------------
+-- ABA LINGUAGEM
+----------------------------------------------------
+criarBotao(langFrame,"Português (BR)",10,function()
+    idiomaAtual = "pt"
+end)
+
+criarBotao(langFrame,"English",55,function()
+    idiomaAtual = "en"
+end)
+
+criarBotao(langFrame,"中文",100,function()
+    idiomaAtual = "cn"
+end)
+
+----------------------------------------------------
+-- ATUALIZAR TEXTO
+----------------------------------------------------
+local function atualizarIdioma()
+    local t = Idiomas[idiomaAtual]
+    title.Text = t.titulo
+    abaTestBtn.Text = t.aba_test
+    abaLangBtn.Text = t.aba_lang
+    btnMsg.Text = t.test_msg
+    btnSpeed.Text = t.speed
+    btnJump.Text = t.jump
+    btnReset.Text = t.reset
 end
 
--------------------------
--- FUNÇÃO DE CARREGAMENTO
--------------------------
-local function carregarRapido(url)
-    local sucessoHttp, codigo = pcall(function()
-        return game:HttpGet(url)
-    end)
+----------------------------------------------------
+-- CONTROLE DE ABAS
+----------------------------------------------------
+abaTestBtn.MouseButton1Click:Connect(function()
+    testFrame.Visible = true
+    langFrame.Visible = false
+end)
 
-    if not sucessoHttp or not codigo then
-        warn("[AvenL Hub] Falha ao baixar o script.")
-        return
-    end
+abaLangBtn.MouseButton1Click:Connect(function()
+    testFrame.Visible = false
+    langFrame.Visible = true
+end)
 
-    local sucessoExec, erro = pcall(function()
-        loadstring(codigo)()
-    end)
-
-    if not sucessoExec then
-        warn("[AvenL Hub] Erro ao executar o script:", erro)
-    end
-end
-
--------------------------
--- DETECÇÃO DO JOGO
--------------------------
-local placeIdAtual = game.PlaceId
-
-if placeIdAtual == BROOKHAVEN_PLACEID then
-    print("[AvenL Hub] Brookhaven RP detectado. Carregando script...")
-    carregarRapido(brookhavenUrl)
-else
-    warn("[AvenL Hub] Este script funciona apenas no Brookhaven RP.")
-end
+----------------------------------------------------
+atualizarIdioma()
+print("[AvenL Hub] Carregado com sucesso!")
+print("[AvenL Hub] By AVENTUREIROTURBO")
