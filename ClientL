@@ -14,7 +14,7 @@ end
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
 local Window = redzlib:MakeWindow({
-    Title = "AvenL Hub| BROOKHAVENðŸ¡",
+    Title = "AvenLHub | BROOKHAVENðŸ¡",
     SubTitle = "Toma Nescau e Dailly",
     SaveFolder = "ConfigFolder"
 })
@@ -28,21 +28,21 @@ Window:AddMinimizeButton({
 local Tab1 = Window:MakeTab({ "Home", "rbxassetid://10723415903" })
 
 Tab1:AddDiscordInvite({
-    Name = "AvenL Hub ",
-    Description = "Dono AVENTUREIROTURBO",
+    Name = "Aven hub ",
+    Description = "Minha Primeira Versão",
     Logo = "rbxassetid://18751483361",
-    Invite = "https://raw.githubusercontent.com/joseluismht33-arch/VenomAven/refs/heads/main/Avenkkjnew
+    Invite = "https://discord.gg/Tz2kut3x"
 })
 
-local Paragraph = Tab1:AddParagraph({"Studio Anexed", "obrigado por ler"})
+local Paragraph = Tab1:AddParagraph({"Studio AvenTb", "obrigado por ler"})
 
 local Paragraph = Tab1:AddParagraph({"Num Cumpensa OWNER", "maioria dos scripts meu"})
 
 local Paragraph = Tab1:AddParagraph({"Dailly <Tester", "nÃ£o usou exexutor mais ajudou em testes"})
 
-local Paragraph = Tab1:AddParagraph({"Jao Owner do AvenL Hub", "Co Owener Obrigado Amgs."})
+local Paragraph = Tab1:AddParagraph({"Jao Owner do AvenHub Hub", "Co Owener Obrigado Amgs."})
 
-local Paragraph = Tab1:AddParagraph({"so para os Parceiros Nosso", "SCRIPT COMANDOS"})
+local Paragraph = Tab1:AddParagraph({"so para os Parceiros Nosso", "SCRIPT CONFIDENCIAL"})
 
 Tab1:AddButton({
     Name = "Rejoin Server",
@@ -152,9 +152,7 @@ TabPlayers:AddButton({
         if not target or not target.Character or not target.Character:FindFirstChild("HumanoidRootPart") then
             warn("Jogador alvo invÃ¡lido.")
             return
-        end
-
-        local targetHRP = target.Character:FindFirstChild("HumanoidRootPart")
+        endlocal targetHRP = target.Character:FindFirstChild("HumanoidRootPart")
         HRP.CFrame = targetHRP.CFrame + Vector3.new(0, 3, 0) -- TP acima do player
     end
 })
@@ -387,8 +385,7 @@ TabPlayers:AddButton({
         local Houses = game.Workspace:FindFirstChild("001_Lots")
         local OldPos = RootPart.CFrame
         local Angles = 0
-        local Vehicles = Workspace.Vehicles
-        local Pos
+        local Vehicles = Workspace.Vehicleslocal Pos
 
         -- Function:
         function Check()
@@ -461,7 +458,9 @@ TabPlayers:AddButton({
                         until Humanoid.Sit
                     end
                 end
-            endtask.wait(0.5)
+            end
+
+            task.wait(0.5)
             local PCar = Vehicles:FindFirstChild(Player.Name.."Car")
             if PCar then
                 if not Humanoid.Sit then
